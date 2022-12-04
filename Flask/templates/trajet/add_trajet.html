@@ -6,23 +6,33 @@
 
 {% block body %}
     <div>
+
         <h2> Ajout d'un trajet </h2>
+
         {% if error %}
             <p class="error"><strong>Error:</strong> {{ error }}</p>
         {% endif %}
+
         <form method="post" action="/trajet/add">
+
             <fieldset>
                 <legend> Créer un trajet </legend>
+
                 <label for="date_heure_de_depart"> Date et heure de départ </label><br>
                 <input id="date_heure_de_depart" type="datetime-local" name="date_heure_de_depart" value="" placeholder="Saisir la date et l'heure de départ"><br>
+
                 <label for="date_heure_d_arrivee"> Date et heure d'arrivée </label><br>
                 <input id="date_heure_d_arrivee" type="datetime-local" name="date_heure_d_arrivee" value="" placeholder="Saisir la date et l'heure de l'arrivée"><br>
+
                 <label for="distance_parcourue"> Distance parcourue </label><br>
                 <input id="distance_parcourue" type="number" min="1" max="55" value="1" placeholder="Saisir le nombre de kilomètre.s"><br>
+
                 <label for="nombre_de_place_s"> Nombre de place.s </label><br>
                 <input id="nombre_de_place_s" type="number" min="1" max="4" value="1" placeholder="Saisir le nombre de place.s"><br>
+
                 <label for="lieu_destinationoudepart"> Lieu de destination ou de départ</label><br>
                 <input id="lieu_destinationoudepart" type="text" minlength="1" maxlength="50" value="" placeholder="Saisir le lieu de destination ou de départ"><br>
+
                 <label for="id_utilisateur"> Utilisateur </label><br>
                 <select name="id_utilisateur">
                     <option value=""> Sélectionner votre nom </option>
@@ -30,6 +40,7 @@
                         <option value="{{user.id_utilisateur}}"> {{user.nom_user}} {{user.prenom_user}} </option>
                     {% endfor %}
                 </select><br>
+
                 <label for="id_commune"> Commune </label><br>
                 <select name="id_commune">
                     <option value=""> Sélectionner la commune </option>
@@ -37,9 +48,13 @@
                         <option value="{{commune1.id_commune}}"> {{commune1.nom_commune}} </option>
                     {% endfor %}
                 </select><br>
+
                 <input type="submit" value="Créer" name="Valider"><br>
+
                 <input type="reset" value="Reset" name="Reset"><br>
             </fieldset>
-            
+
+        </form>
+
     </div>
 {% endblock %}
