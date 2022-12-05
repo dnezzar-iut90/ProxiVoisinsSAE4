@@ -23,7 +23,7 @@ def show_accueil():
 @app.route('/trajet/show')
 def show_trajet():
     
-    sql = "SELECT UTILISATEUR.nom_user, UTILISATEUR.prenom_user, id_trajet, date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart FROM TRAJET INNER JOIN UTILISATEUR ON TRAJET.id_utilisateur = UTILISATEUR.id_utilisateur;"
+    sql = "SELECT UTILISATEUR.nom_user, UTILISATEUR.prenom_user, id_trajet, date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart FROM TRAJET INNER JOIN UTILISATEUR ON TRAJET.id_utilisateur = UTILISATEUR.id_utilisateur"
     mycursor.execute(sql)
     trajet = mycursor.fetchall()
 
@@ -64,7 +64,7 @@ def valid_add_trajet():
     print("ID COMMUNE " + id_commune)
 
     tuple_insert=(date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart, id_utilisateur, id_commune)
-    sql = "INSERT INTO trajet(date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart, id_utilisateur, id_commune)'''
+    sql = "INSERT INTO trajet(date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart, id_utilisateur, id_commune)"
     mycursor.execute(sql, tuple_insert)
     mydb.commit()
 
