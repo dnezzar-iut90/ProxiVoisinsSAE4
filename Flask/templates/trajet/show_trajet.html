@@ -6,7 +6,7 @@
 
 {% block body %}
     <div>
-        <h3>Arbres</h3>
+        <h3>Trajets</h3>
         <a href="/trajet/add">Ajouter un trajet</a>
         <br>
         <br>
@@ -24,16 +24,12 @@
                     {% for ligne in trajet %}
                         <tr>
                             <td>{{ ligne.id_trajet }}</td>
-                            <td>{{ ligne.date__heure_de_depart }}</td>
+                            <td>{{ ligne.date_heure_de_depart }}</td>
                             <td>{{ ligne.date_heure_d_arrivee }}</td>
                             <td>{{ ligne.distance_parcourue }}</td>
                             <td>{{ ligne.nombre_de_place_s }}</td>
                             <td>{{ ligne.lieu_destinationoudepart }}</td>
-                            <td>
-                                {% for user in utilisateur %}
-                                <option value="{{user.id_utilisateur}}"> {{user.nom_user}} {{user.prenom_user}} </option>
-                                {% endfor %}
-                            </td>
+                            <td>{{ ligne.nom_user }}</td>
                             <td>
                                 {% for commune1 in commune %}
                                     <option value="{{commune1.id_commune}}"> {{commune1.nom_commune}} </option>

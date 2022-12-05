@@ -1,16 +1,18 @@
 from flask import Flask, request, render_template, redirect, url_for, abort, flash
-import pymysql
+
 app = Flask(__name__)
 app.secret_key = 'une cle(token) : grin de sel(any random string)'
 
+from flask import session
 import pymysql.cursors
+
 mydb = pymysql.connect(
     host="localhost",
     user="amajoure",
     password="0903",
     database="SAE4",
     charset='utf8mb4',
-    cursorclass=pymsql.cursors.DictCursor
+    cursorclass=pymysql.cursors.DictCursor
 )
 mycursor = mydb.cursor()
 
@@ -20,19 +22,16 @@ def show_accueil():
 
 @app.route('/trajet/show')
 def show_trajet():
-    sql = "SELECT * FROM TRAJET"
+    
+    sql = "SELECT UTILISATEUR.nom_user, UTILISATEUR.prenom_user, id_trajet, date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart FROM TRAJET INNER JOIN UTILISATEUR ON TRAJET.id_utilisateur = UTILISATEUR.id_utilisateur;"
     mycursor.execute(sql)
     trajet = mycursor.fetchall()
-    
-    sql = "SELECT * FROM UTILISATEUR"
-    mycursor.execute(sql)
-    utilisateur = mycursor.fetchall()
 
     sql = "SELECT * FROM COMMUNE"
     mycursor.execute(sql)
     commune = mycursor.fetchall()
 
-    return render_template('trajet/show_trajet.html', trajet=trajet, utilisateur=utilisateur, commune=commune)
+    return render_template('trajet/show_trajet.html', trajet=trajet, commune=commune)
 
 @app.route('/trajet/add', methods=['GET'])
 def add_trajet():
@@ -105,3 +104,6 @@ def delete_trajet():
     mydb.commit()
 
     return redirect(url_for('show_trajet'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
