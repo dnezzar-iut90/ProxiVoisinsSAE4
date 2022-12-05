@@ -33,7 +33,7 @@ def show_trajet():
 
     return render_template('trajet/show_trajet.html', trajet=trajet, commune=commune)
 
-@app.route('/trajet/add', methods=['GET'])
+@app.route('/trajet/add')
 def add_trajet():
     sql = "SELECT * FROM UTILISATEUR"
     mycursor.execute(sql)
@@ -55,8 +55,16 @@ def valid_add_trajet():
     id_utilisateur = request.form.get('id_utilisateur','')
     id_commune = request.form.get('id_commune','')
 
+    print("DATE DEPART" + date_heure_de_depart)
+    print("DATE ARRIVE" + date_heure_d_arrivee)
+    print("DISTANCE PARCOURUE " + distance_parcourue)
+    print("NB PLACE " + nombre_de_place_s)
+    print("DESTINATION " + lieu_destinationoudepart)
+    print("ID USER " + id_utilisateur)
+    print("ID COMMUNE " + id_commune)
+
     tuple_insert=(date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart, id_utilisateur, id_commune)
-    sql = '''INSERT INTO trajet(date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart, id_utilisateur, id_commune)'''
+    sql = "INSERT INTO trajet(date_heure_de_depart, date_heure_d_arrivee, distance_parcourue, nombre_de_place_s, lieu_destinationoudepart, id_utilisateur, id_commune)'''
     mycursor.execute(sql, tuple_insert)
     mydb.commit()
 
