@@ -11,13 +11,16 @@
         <br>
         <br>
         <table>
+
             <thead>
                 <tr>
                     <th>Id</th><th>Date et heure de départ</th><th>Date et heure d'arrivée</th><th>Distance parcourue</th><th>Nombre de place.s</th><th>Lieu de destination ou de départ</th><th>Nom et prénom</th><th>Commune</th>
                 </tr>
             </thead>
+
             <tbody>
                 {% if trajet | length>=1 %}
+
                     {% for ligne in trajet %}
                         <tr>
                             <td>{{ ligne.id_trajet }}</td>
@@ -42,10 +45,12 @@
                             </td>
                         </tr>
                     {% endfor %}
+
                 {%else %}
                         <tr>
                             <td> Pas de trajet </td>
                         </tr>
+                        
                 {% endif %}
             </tbody>
         </table>
