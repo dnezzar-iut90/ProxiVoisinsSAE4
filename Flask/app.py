@@ -33,7 +33,7 @@ def show_trajet():
 
     return render_template('trajet/show_trajet.html', trajet=trajet, commune=commune)
 
-@app.route('/trajet/add')
+@app.route('/trajet/add', methods=['GET'])
 def add_trajet():
     sql = "SELECT * FROM UTILISATEUR"
     mycursor.execute(sql)

@@ -36,8 +36,7 @@
                                 {% endfor %}
                             </td>
                             <td>
-                                <a href="/trajet/edit/{{ ligne.id }}">Editer</a>
-                                <a href="/trajet/delete?id={{ ligne.id }}" onclick="return confirm('Are you sure?')" >Supprimer</a>
+                                <a class="a1" href="/trajet/edit/{{ ligne.id }}">Editer</a> <a class="a2" href="/trajet/delete?id={{ ligne.id }}" onclick="return confirm('Are you sure?')" >Supprimer</a>
                             </td>
                         </tr>
                     {% endfor %}
